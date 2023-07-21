@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="
+    text/css"
+      href="./styles/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
+    <title>Quiz-ui-Project</title>
+    <link rel="shortcut icon" href="icons/calculator.png" type="image/x-icon" />
+  </head>
+  <body>
+    <section class="reset-section">
+      <button class="btn-reset btn-common">Reset</button>
+    </section>
+    <section class="main-container flex-class">
+      <div class="blue-area">
+        <div class="question-container">
+          <p class="question" id="mainquestion">hi</p>
+        </div>
+        <div class="white-row">
+          <div class="row">
+            <p class="options" id="option-1" onclick="colorChange()"></p>
+          </div>
+          <div class="row">
+            <p class="options" id="option-2" onclick="colorChange()"></p>
+          </div>
+        </div>
+        <div class="white-row">
+          <div class="row">
+            <p class="options" id="option-3" onclick="colorChange()"></p>
+          </div>
+          <div class="row">
+            <p class="options" id="option-4" onclick="colorChange()"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="only-btns flex-class">
+      <div class="btn-container">
+        <img
+          src="/icons/previous.png"
+          class="btn-prev-next"
+          alt="Previous-icon"
+          onclick="prevQuestion()"
+          id="prevBtn"
+        />
+      </div>
+      <div class="btn-container">
+        <img
+          src="/icons/next.png"
+          class="btn-prev-next"
+          alt="Next-icon"
+          onclick="nextQuestion()"
+          id="nextBtn"
+        />
+      </div>
+    </section>
+    <section class="submit-section flex-class">
+      <button class="btn-submit btn-common">Submit</button>
+    </section>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
