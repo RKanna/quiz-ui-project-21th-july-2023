@@ -90,6 +90,7 @@ body {
 }
 .nextOnly {
   opacity: 50%;
+  cursor: default;
 }
 .submit-section {
   padding-top: 8rem;
