@@ -22,7 +22,13 @@
   </head>
   <body>
     <section class="reset-section">
-      <button class="btn-reset btn-common">Reset</button>
+      <button
+        class="btn-reset btn-common"
+        id="reset-btn"
+        onclick="resetEverything()"
+      >
+        Reset
+      </button>
     </section>
     <section class="main-container flex-class">
       <div class="blue-area">
@@ -68,7 +74,13 @@
       </div>
     </section>
     <section class="submit-section flex-class">
-      <button class="btn-submit btn-common">Submit</button>
+      <button
+        class="btn-submit btn-common"
+        id="submit"
+        onclick="calculateScore()"
+      >
+        Submit
+      </button>
     </section>
     <script src="./scripts/script.js"></script>
   </body>
