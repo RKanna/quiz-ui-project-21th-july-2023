@@ -31,15 +31,30 @@ let nestedAnswers = [
   ["Peru", "Mexico", "Bolivia", "Chile"],
 ];
 
+let finalAnswers = [
+  "Brasília",
+  "Nile River",
+  "Antarctic Desert",
+  "Himalayas",
+  "Brazil",
+  "Venice",
+  "Australia",
+  "Rwanda",
+  "Asia and Europe",
+  "Peru",
+];
+
 const questionInput = document.getElementById("mainquestion");
 const nextBtn = document.getElementById("nextBtn");
 const prevBtn = document.getElementById("prevBtn");
 const options = document.querySelectorAll(
   "#option-1, #option-2, #option-3, #option-4"
 );
+const submit = document.getElementById("submit");
+const reset = document.getElementById("reset-btn");
 
 let indexCheckValue = 0;
-displayQuestion(indexCheckValue); // Display the first question and options
+displayQuestion(indexCheckValue);
 
 function displayQuestion(index) {
   questionInput.innerText = arrayOfQuestions[index];
@@ -48,6 +63,24 @@ function displayQuestion(index) {
     options[i].innerText = answers[i];
   }
   resetColor();
+  if (
+    arrayOfQuestions[index] ===
+    "Machu Picchu, an ancient Incan citadel, is located in which country?"
+  ) {
+    nextBtn.disabled = true;
+    nextBtn.classList.add("nextOnly");
+  } else {
+    nextBtn.disabled = false;
+    nextBtn.classList.remove("nextOnly");
+  }
+
+  if (arrayOfQuestions[index] === "What is the capital of Brazil?") {
+    prevBtn.disabled = true;
+    prevBtn.classList.add("nextOnly");
+  } else {
+    prevBtn.disabled = false;
+    prevBtn.classList.remove("nextOnly");
+  }
 }
 
 function nextQuestion() {
@@ -74,22 +107,27 @@ function prevQuestion() {
   nextBtn.classList.remove("nextOnly");
 }
 
+let userAnswers = new Array(arrayOfQuestions.length).fill(null);
+
 function checkAnswer(selectedIndex) {
   const selectedAnswer = nestedAnswers[indexCheckValue][selectedIndex];
+  userAnswers[indexCheckValue] = selectedAnswer;
   console.log("Selected Answer:", selectedAnswer);
 }
 
 function colorChange() {
-  options.forEach((option) => {
+  options.forEach((option, index) => {
     option.addEventListener("click", () => {
       options.forEach((el) => {
         el.classList.remove("back-clr-change");
       });
 
       option.classList.add("back-clr-change");
+      checkAnswer(index);
     });
   });
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   colorChange();
 });
@@ -98,4 +136,25 @@ function resetColor() {
   options.forEach((option) => {
     option.classList.remove("back-clr-change");
   });
+}
+
+function calculateScore() {
+  let score = 0;
+  for (let i = 0; i < userAnswers.length; i++) {
+    if (userAnswers[i] === finalAnswers[i]) {
+      score++;
+    }
+  }
+  const totalQuestions = arrayOfQuestions.length;
+  const message = `Your score: ${score}/${totalQuestions}`;
+  alert(message);
+}
+
+function resetEverything() {
+  // Reset the user's answers array to null for all questions
+  userAnswers = new Array(arrayOfQuestions.length).fill(null);
+
+  // Reset the current question index and display the first question
+  indexCheckValue = 0;
+  displayQuestion(indexCheckValue);
 }
