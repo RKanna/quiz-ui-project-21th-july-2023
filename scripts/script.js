@@ -151,10 +151,7 @@ function calculateScore() {
 }
 
 function resetEverything() {
-  // Reset the user's answers array to null for all questions
   userAnswers = new Array(arrayOfQuestions.length).fill(null);
-
-  // Reset the current question index and display the first question
   indexCheckValue = 0;
   displayQuestion(indexCheckValue);
 }
