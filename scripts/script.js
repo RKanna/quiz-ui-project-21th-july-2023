@@ -83,28 +83,30 @@ function displayQuestion(index) {
   }
 }
 
-function nextQuestion() {
-  indexCheckValue++;
-  if (indexCheckValue < arrayOfQuestions.length) {
-    displayQuestion(indexCheckValue);
-  } else {
-    nextBtn.disabled = true;
-    nextBtn.classList.add("nextOnly");
-  }
-  prevBtn.disabled = false;
-  prevBtn.classList.remove("nextOnly");
-}
-
 function prevQuestion() {
   indexCheckValue--;
   if (indexCheckValue >= 0) {
     displayQuestion(indexCheckValue);
+    nextBtn.disabled = false;
+    nextBtn.classList.remove("nextOnly");
   } else {
+    indexCheckValue = 0;
     prevBtn.disabled = true;
     prevBtn.classList.add("nextOnly");
   }
-  nextBtn.disabled = false;
-  nextBtn.classList.remove("nextOnly");
+}
+
+function nextQuestion() {
+  indexCheckValue++;
+  if (indexCheckValue < arrayOfQuestions.length) {
+    displayQuestion(indexCheckValue);
+    prevBtn.disabled = false;
+    prevBtn.classList.remove("nextOnly");
+  } else {
+    indexCheckValue = arrayOfQuestions.length - 1;
+    nextBtn.disabled = true;
+    nextBtn.classList.add("nextOnly");
+  }
 }
 
 let userAnswers = new Array(arrayOfQuestions.length).fill(null);
